@@ -14,7 +14,7 @@ from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 from backend.settings.components import  config, BASE_DIR
-import os
+from os import environ
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
@@ -119,11 +119,27 @@ TIME_ZONE = 'Asia/Kolkata'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR.joinpath('static')
+
+MEDIA_ROOT = BASE_DIR.joinpath('media')
+MEDIA_URL = '/media/'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 INSTALLED_APPS += ['flake8']
+
+
+
+PROFILE = 'profiles/'
+PROFILE2 = 'profiles2/'
+PROFILE3 = 'profiles3/'
+
+AWS_ACCESS_KEY = config('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS = config('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET = config('AWS_STORAGE_BUCKET_NAME')
+AWS_S3_REGION = config('AWS_S3_REGION_NAME')
+
